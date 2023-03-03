@@ -45,7 +45,7 @@ st.sidebar.title('Lamis ChatBot  🤖 🤖')
 st.sidebar.write("""
          ###### Try my  chatbot made with  openAI, GPT-3 and  Streamlit. I used Streamlit-Chat which  is simple component, which provides a chat-app like interface, which makes a chatbot deployed on Streamlit have a cool UI.
         ###### [My LinkedIn profile ](https://www.linkedin.com/in/lamisghoualmi/)
-        ###### [My Github](https://github.com/lamisghoualmi/)
+        ###### [My Github](https://lamisghoualmi.github.io/)
          """)
 
 
