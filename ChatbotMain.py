@@ -29,10 +29,12 @@ def generate_response(prompt):
     completions = openai.Completion.create (
         engine="text-davinci-003",
         prompt=prompt,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.5,
+        temperature=0.9,
+        max_tokens=150,
+        top_p=1,
+        frequency_penalty=0.0,
+        presence_penalty=0.6,
+        stop=[" Human:", " AI:"]
     )
 
     message = completions.choices[0].text
@@ -45,7 +47,7 @@ st.sidebar.title('Lamis ChatBot  🤖 🤖')
 st.sidebar.write("""
          ###### Try my  chatbot made with  openAI, GPT-3 and  Streamlit. I used Streamlit-Chat which  is simple component, which provides a chat-app like interface, which makes a chatbot deployed on Streamlit have a cool UI.
         ###### [My LinkedIn profile ](https://www.linkedin.com/in/lamisghoualmi/)
-        ###### [My Github](https://lamisghoualmi.github.io/)
+        ###### [My Github](https://github.com/lamisghoualmi/)
          """)
 
 
@@ -57,19 +59,26 @@ if 'past' not in st.session_state:
 
 
 def get_text():
-    input_text = st.text_input("You: "," Hello Mr chatbot, how was your day? ", key="input")
+    #input_text = st.text_input("Human [enter your message here]: "," Hello Mr AI how was your day today? ", key="input")
+    input_text= st.text_input('Human [enter your message here]:', '')
     return input_text 
 
 
 user_input = get_text()
 
+
+
 if user_input:
     output = generate_response(user_input)
     st.session_state.past.append(user_input)
     st.session_state.generated.append(output)
+    
+
 
 if st.session_state['generated']:
 
     for i in range(len(st.session_state['generated'])-1, -1, -1):
         message(st.session_state["generated"][i], key=str(i))
         message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+
+
