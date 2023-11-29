@@ -17,7 +17,7 @@ from streamlit_chat import message
 # streamlit run ChatBotMain.py
 
 
-openai.api_key=st.secrets["pass"]
+#openai.api_key=st.secrets["pass"]
 
 
 
@@ -40,7 +40,7 @@ def generate_response(prompt):
     message = completions.choices[0].text
     return message
 
-st.title('Lamis ChatBot  🤖 🤖')
+st.title('Lamis ChatBot  🤖 🤖, Postponed the app because my  openai API is in payed mode, you can always check the code on gitHub')
 
 
 st.sidebar.title('Lamis ChatBot  🤖 🤖')
